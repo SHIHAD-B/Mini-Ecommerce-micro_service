@@ -1,0 +1,1 @@
+export * as productUseCases from './product'

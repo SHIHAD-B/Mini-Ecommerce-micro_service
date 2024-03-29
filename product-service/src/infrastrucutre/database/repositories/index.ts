@@ -1,0 +1,1 @@
+export * as product_repo from './productRepo'
