@@ -19,7 +19,7 @@ export default (dependencies: any) => {
             }
 
         } catch (error) {
-            console.log(error, "Error occured in adding to cart controller......")
+            console.log(error, "Error occured in adding to cart controller........")
             next(error)
         }
     }
