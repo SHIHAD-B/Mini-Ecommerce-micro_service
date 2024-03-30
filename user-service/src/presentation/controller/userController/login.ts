@@ -18,7 +18,7 @@ export default (dependencies: any) => {
                 console.log("password" + password)
                 console.log("user" + user)
 
-                if (!user) throw new Error("user is not found......")
+                if (!user) throw new Error("user is not found........")
 
                 const match = await compare(password, user.password)
                 if (!match) {
