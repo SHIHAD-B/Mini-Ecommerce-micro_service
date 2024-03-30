@@ -53,14 +53,3 @@ exports.addProduct_repo = addProduct_repo;
 //         return false
 //     }
 // }
-// export const addToCart_repo = async (productid: IProduct["_id"]): Promise<IProduct | boolean> => {
-//     try {
-//         console.log("reached order product repo")
-//         const product = await Products.findOne({ _id: productid })
-//         if (product) return product
-//         else return false
-//     } catch (error) {
-//         console.error("Error in ordering product", error)
-//         return false
-//     }
-// }

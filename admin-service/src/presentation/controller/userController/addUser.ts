@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcrypt'
+import { addUsertoKaf } from '../../../infrastructure/kafka/producers/addUser'
 
 export default (dependencies: any) => {
     const { adminUseCases: { addUser,userExistCheck } } = dependencies
@@ -17,12 +18,14 @@ export default (dependencies: any) => {
 
             const hashedPassword: string | null = await bcrypt.hash(credential.password, salt);
             credential.password = hashedPassword
+            credential.isblocked=false
             
             const admin = await addUser(dependencies).interactor(credential)
             if (!admin) {
                 res.json({ message: "error in adding user" })
             } else {
                 res.json({ message: "user added successfully~~~~~~~~~~~~~~~~" })
+                addUsertoKaf(admin)
             }
             }
         }

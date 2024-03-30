@@ -14,17 +14,24 @@ exports.default = (dependencies) => {
     const { productUseCases: { addProduct } } = dependencies;
     const addproduct = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const add = yield addProduct(dependencies).interactor(req.body);
-            if (!add) {
-                return res.json({ message: "Error in adding product" });
+            const { name, stock, description, price } = req.body;
+            if (!name || name.trim("") == "" || !stock || stock < 0 || !description || description.trim("") == "" || !price || price < 0) {
+                res.json({ message: "please enter the data correctly : name,stock,description,price" });
             }
             else {
-                res.json(add);
-                (0, productAddProducer_1.productAddProducer)(add);
+                const product = yield addProduct(dependencies).interactor(req.body);
+                if (!product) {
+                    res.json({ message: "issue in adding product" });
+                }
+                else {
+                    res.json({ message: "product added successfully" });
+                    (0, productAddProducer_1.productAddProducer)(product);
+                }
             }
         }
         catch (error) {
             console.log(error, "error occured in product add controller");
+            next(error);
         }
     });
     return addproduct;

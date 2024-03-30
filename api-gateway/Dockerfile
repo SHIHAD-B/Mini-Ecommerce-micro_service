@@ -8,4 +8,6 @@ RUN npm install
 
 EXPOSE 4000
 
+COPY . .
+
 CMD [ "npm" , "run" , "dev" ]

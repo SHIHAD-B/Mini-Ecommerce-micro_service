@@ -21,11 +21,14 @@
     "express": "^4.19.2",
     "kafkajs": "^2.2.4",
     "mongoose": "^8.2.3",
+    "nodemon": "^3.1.0",
     "typescript": "^5.4.3"
   },
   "devDependencies": {
+    "nodemon": "^3.1.0",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "ts-node": "^10.9.2"
   }
 }

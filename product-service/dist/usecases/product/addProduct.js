@@ -13,8 +13,8 @@ exports.default = (dependencies) => {
     const { product_repo: { addProduct_repo } } = dependencies;
     if (!addProduct_repo)
         throw new Error("Dependencies is require ");
-    const interactor = () => __awaiter(void 0, void 0, void 0, function* () {
-        return yield addProduct_repo(dependencies);
+    const interactor = (credential) => __awaiter(void 0, void 0, void 0, function* () {
+        return yield addProduct_repo(credential);
     });
     return { interactor };
 };

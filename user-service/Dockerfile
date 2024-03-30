@@ -6,6 +6,13 @@ COPY package.json .
 
 RUN npm install
 
+RUN npm install -g ts-node
+
+RUN npm rebuild bcrypt --build-from-source
+
+COPY . .
+
 EXPOSE 4001
 
-CMD [ "npm" , "run" , "dev" ]
+CMD [ "npm" , "start" ]
+

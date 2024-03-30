@@ -1,11 +1,5 @@
 import { Document, ObjectId } from "mongoose";
 
-export interface ICartItem {
-    productId: string,
-    productName: string,
-    quantity: number,
-    price: number
-}
 
 export interface IUser extends Document {
     _id?: ObjectId,
@@ -13,6 +7,5 @@ export interface IUser extends Document {
     email?: string,
     password?: string,
     role?: string,
-    Isblocked:Boolean ;
-    cart?: ICartItem[]
+    isblocked:Boolean ;
 }

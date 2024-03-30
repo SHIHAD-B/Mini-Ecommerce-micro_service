@@ -1,9 +1,18 @@
-import { consumer } from '.'
+import { consumer } from './index'
 import { createSubscribe } from './subscribe'
 
 export const runConsumer = async () => {
     try {
-        await consumer.connect()
+        try {
+            await consumer.connect();
+        } catch (error) {
+            console.error('Error connecting to Kafka:', error);
+        
+            await new Promise(resolve => setTimeout(resolve, 5000));
+          
+            await consumer.connect();
+        }
+        
 
         await consumer.subscribe({
             topic: "to-user-service",
@@ -14,7 +23,7 @@ export const runConsumer = async () => {
         await consumer.run({
             eachMessage: async ({ message }) => {
                 const { key, value } = message
-                console.log("🚀🚀🚀🚀🚀🚀🚀", key, '🚀🚀🚀🚀🚀🚀🚀')
+                console.log("🚀🚀🚀🚀🚀🚀🚀", key?.toString(), '🚀🚀🚀🚀🚀🚀🚀')
                 const subscriberMethod = String(key)
                 const subscriberData = JSON.parse(String(value))
 

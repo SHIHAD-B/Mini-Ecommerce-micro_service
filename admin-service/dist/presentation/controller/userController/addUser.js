@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const addUser_1 = require("../../../infrastructure/kafka/producers/addUser");
 exports.default = (dependencies) => {
     const { adminUseCases: { addUser, userExistCheck } } = dependencies;
     const addusers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -30,12 +31,14 @@ exports.default = (dependencies) => {
                 const salt = yield bcrypt_1.default.genSalt(saltRounds);
                 const hashedPassword = yield bcrypt_1.default.hash(credential.password, salt);
                 credential.password = hashedPassword;
+                credential.isblocked = false;
                 const admin = yield addUser(dependencies).interactor(credential);
                 if (!admin) {
                     res.json({ message: "error in adding user" });
                 }
                 else {
                     res.json({ message: "user added successfully~~~~~~~~~~~~~~~~" });
+                    (0, addUser_1.addUsertoKaf)(admin);
                 }
             }
         }

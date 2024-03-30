@@ -6,7 +6,8 @@ export default (dependencies: any) => {
         credential: {
             name: String,
             email: String,
-            password: String
+            password: String,
+            isblocked:boolean
         }
     ) => {
         return await addUser_repo(credential)

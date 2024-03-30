@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("./config/database");
 const server_1 = __importDefault(require("./server"));
+const consumer_1 = require("./infrastructure/kafka/consumer");
+const consumer_2 = require("./infrastructure/kafka/consumer");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         server_1.default;
@@ -22,8 +24,26 @@ const server_1 = __importDefault(require("./server"));
             console.log(error);
             process.exit();
         });
+        yield (0, consumer_1.runConsumer)()
+            .then(() => console.log("kafka consumer is runnning"))
+            .catch((error) => {
+            console.log(error.message, "Error while running kafka comsumer");
+            process.exit();
+        });
     }
     catch (error) {
         console.log(error);
+    }
+    finally {
+        process.on("SIGINT", () => __awaiter(void 0, void 0, void 0, function* () {
+            console.log("server is shutting down");
+            yield (0, consumer_2.stopConsumer)()
+                .then(() => {
+                console.log("kafka is stopped");
+            }).catch((error) => {
+                console.log(error, "Error is occured in stoping the kafka");
+            });
+            process.exit();
+        }));
     }
 }))();

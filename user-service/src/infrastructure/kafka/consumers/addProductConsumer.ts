@@ -4,7 +4,7 @@ import { IProduct } from '../../../entities/product.entity'
 
 export default async (data: IProduct) => {
     try {
-
+        console.log("message reached")
         const newProduct = new Product({ ...data })
         await newProduct.save()
 

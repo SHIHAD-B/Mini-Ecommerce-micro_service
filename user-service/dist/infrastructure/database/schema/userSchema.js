@@ -29,13 +29,7 @@ const UsersSchema = new mongoose_1.Schema({
     email: { type: String },
     password: { type: String },
     role: { type: String },
-    isblocked: { type: Boolean },
-    cart: [{
-            price: { type: Number },
-            productId: { type: String },
-            productName: { type: String },
-            quantity: { type: Number },
-        }],
+    isblocked: { type: Boolean }
 });
 const Users = mongoose_1.default.model('Users', UsersSchema);
 exports.default = Users;

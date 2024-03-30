@@ -7,13 +7,7 @@ const UsersSchema: Schema = new Schema({
     email: { type: String },
     password: { type: String },
     role: { type: String },
-    isblocked: { type: Boolean },
-    cart: [{
-        price: { type: Number },
-        productId: { type: String },
-        productName: { type: String },
-        quantity: { type: Number },
-    }],
+    isblocked: { type: Boolean }
 });
 
 const Users = mongoose.model<IUser>('Users', UsersSchema);

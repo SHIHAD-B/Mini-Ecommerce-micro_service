@@ -15,7 +15,7 @@ import { stopConsumer } from "./infrastructure/kafka/consumer";
         await runConsumer()
             .then(() => console.log("kafka consumer is runnning"))
             .catch((error: any) => {
-                console.log(error, "Error while running kafka comsumer")
+                console.log(error.message, "Error while running kafka comsumer")
                 process.exit()
             })
 

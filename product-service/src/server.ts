@@ -30,6 +30,6 @@ app.use((
 app.use(cors())
 
 app.listen(port, () => {
-    console.log('user service is running')
+    console.log('product service is running')
 })
 export default app
