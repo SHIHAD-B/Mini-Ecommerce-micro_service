@@ -15,7 +15,7 @@ export default (dependencies: any) => {
                 if (!product) {
                     res.json({ message: "issue in adding product" })
                 } else {
-                    res.json({ message: "product added successfully" })
+                    res.json({ message: "product added successfully......" })
                     productAddProducer(product)
                 }
             }

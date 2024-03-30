@@ -15,5 +15,5 @@ app.use('/admin', proxy("http://localhost:4004"))
 app.use('/cart', proxy("http://localhost:4005"))
 
 app.listen(PORT, () => {
-    console.log(`Api gateway is running at ${PORT}`)
+    console.log(`Api gateway is running at..... ${PORT}`)
 })

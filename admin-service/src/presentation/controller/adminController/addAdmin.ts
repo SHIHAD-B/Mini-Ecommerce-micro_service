@@ -6,7 +6,7 @@ export default (dependencies: any) => {
 
     const add_admin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            console.log("reached add admin controller")
+            console.log("reached add admin controller...")
             const credential = req.body
             if (!credential.name || !credential.email || !credential.password || credential.name.trim("") == "" || credential.email.trim("") == "" || credential.password.trim("") == "") {
                 res.json({ message: "enter the required fiels : name,email,password" })
