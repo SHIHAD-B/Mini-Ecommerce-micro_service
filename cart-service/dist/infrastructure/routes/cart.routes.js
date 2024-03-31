@@ -9,7 +9,7 @@ const cartRoutes = (dependencies) => {
     const router = (0, express_1.Router)();
     const { removeCart, cartList, addToCart } = (0, cartController_1.default)(dependencies);
     router.route('/addtocart').post(addToCart);
-    router.route('/cartlist').post(cartList);
+    router.route('/cartlist').get(cartList);
     router.route('/removecart').post(removeCart);
     return router;
 };

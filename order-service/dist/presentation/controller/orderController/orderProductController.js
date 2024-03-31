@@ -9,26 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (dependencies) => {
-    const { CartUseCase: { cartListUseCase } } = dependencies;
-    const cartList = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.default = (dependecies) => {
+    const { orderUseCases: { orderProduct } } = dependecies;
+    const order_product = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const id = String(req.query.id);
-            if (!id) {
-                res.json({ message: "please enter the required field: id" });
+            const order = yield orderProduct(dependecies).interactor(req.body);
+            if (!order) {
+                res.json({ message: "something went wrong in ordering product in order product controller" });
             }
             else {
-                const list = yield cartListUseCase(dependencies).interactor({ id });
-                if (!list)
-                    res.json({ message: "issue in listin cart in controler" });
-                else
-                    res.json(list);
+                res.json({ message: "order placed successfully" });
             }
         }
         catch (error) {
-            console.log(error, "Error occured in cart list controller");
-            next(error);
+            console.log(error, "Error occured in order product controller");
         }
     });
-    return cartList;
+    return order_product;
 };

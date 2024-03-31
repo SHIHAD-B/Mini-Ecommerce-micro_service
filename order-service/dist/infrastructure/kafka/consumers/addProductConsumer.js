@@ -8,13 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (dependencies) => {
-    const { order_repo: { orderList_repo } } = dependencies;
-    if (!dependencies)
-        throw new Error("dependencies are required");
-    const interactor = (credential) => __awaiter(void 0, void 0, void 0, function* () {
-        return yield orderList_repo(credential);
-    });
-    return { interactor };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+const productSchema_1 = __importDefault(require("../../database/schema/productSchema"));
+exports.default = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log("message reached");
+        const newProduct = new productSchema_1.default(Object.assign({}, data));
+        yield newProduct.save();
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});

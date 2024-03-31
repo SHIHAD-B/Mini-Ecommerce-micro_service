@@ -5,9 +5,10 @@ const orderRouter = (dependencies: any) => {
 
     const router: Router = Router()
 
-    const { orderListController } = orderController(dependencies)
+    const { orderListController,orderProductController } = orderController(dependencies)
 
     router.route('/orderlist').get(orderListController)
+    router.route('/orderproduct').post(orderProductController)
     return router
 }
 export default orderRouter

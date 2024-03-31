@@ -13,7 +13,8 @@ exports.default = (dependencies) => {
     const { orderUseCases: { orderList } } = dependencies;
     const order_List = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const orders = yield orderList(dependencies).interactor();
+            const userId = req.query.userId;
+            const orders = yield orderList(dependencies).interactor({ userId });
             if (orders) {
                 res.json(orders);
             }
@@ -22,7 +23,7 @@ exports.default = (dependencies) => {
             }
         }
         catch (error) {
-            console.log(error, "Error occured in fetching orders from database");
+            console.log(error, "Error occured in fetching orders from database.........");
         }
     });
     return order_List;

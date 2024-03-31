@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (dependencies) => {
-    const { order_repo: { orderList_repo } } = dependencies;
-    if (!dependencies)
+exports.default = (dependecies) => {
+    const { order_repo: { orderProduct_repo } } = dependecies;
+    if (!dependecies)
         throw new Error("dependencies are required");
     const interactor = (credential) => __awaiter(void 0, void 0, void 0, function* () {
-        return yield orderList_repo(credential);
+        return yield orderProduct_repo(credential);
     });
     return { interactor };
 };

@@ -24,6 +24,6 @@ app.use((err, req, res, next) => {
 });
 app.use((0, cors_1.default)());
 app.listen(port, () => {
-    console.log('user service is running');
+    console.log('order service is running');
 });
 exports.default = app;

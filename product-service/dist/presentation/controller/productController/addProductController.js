@@ -24,7 +24,7 @@ exports.default = (dependencies) => {
                     res.json({ message: "issue in adding product" });
                 }
                 else {
-                    res.json({ message: "product added successfully" });
+                    res.json({ message: "product added successfully........" });
                     (0, productAddProducer_1.productAddProducer)(product);
                 }
             }

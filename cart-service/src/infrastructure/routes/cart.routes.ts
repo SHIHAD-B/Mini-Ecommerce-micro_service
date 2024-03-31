@@ -9,7 +9,7 @@ const cartRoutes = (dependencies: any) => {
     const { removeCart, cartList, addToCart } = cartController(dependencies)
 
     router.route('/addtocart').post(addToCart)
-    router.route('/cartlist').post(cartList)
+    router.route('/cartlist').get(cartList)
     router.route('/removecart').post(removeCart)
     return router
 

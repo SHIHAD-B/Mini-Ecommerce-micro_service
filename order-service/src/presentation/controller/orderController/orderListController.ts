@@ -5,7 +5,8 @@ export default (dependencies: any) => {
 
     const order_List = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const orders = await orderList(dependencies).interactor()
+            const userId=req.query.userId
+            const orders = await orderList(dependencies).interactor({userId})
             if (orders) {
                 res.json(orders)
             } else {

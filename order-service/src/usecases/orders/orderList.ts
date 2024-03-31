@@ -3,8 +3,12 @@ export default (dependencies: any) => {
 
     if (!dependencies) throw new Error("dependencies are required")
 
-    const interactor = async () => {
-        return await orderList_repo()
+    const interactor = async (
+        credential:{
+            userId:String
+        }
+    ) => {
+        return await orderList_repo(credential)
     }
     return { interactor }
 }
